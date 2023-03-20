@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FnbZN35/MKJJAJXrFEzFVLylC1qMq6dob3DpMFahdT+DnYtvSclp2nGQZmSXT2ca4JQuz1Tl4JiViBEWnQabkg==",
+  "dgSpecHash": "BIGnrtYlu2cowJdnfxvlSbh2uejR9esSLup7a4lBfuCAjDEVw4N1uZTkgP3HxRMwcxJNZPvCxr1rgxRf+ZpAFw==",
   "success": true,
-  "projectFilePath": "D:\\2023\\[SP23]PRN211\\Group1_Assignment_Final\\G1FOOD_Web_Admin\\G1FOOD_Web_Admin.csproj",
+  "projectFilePath": "D:\\2023\\[SP23]PRN211\\Project\\Group1_Assignment_Final\\G1FOOD_Web_Admin\\G1FOOD_Web_Admin.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\84832\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\84832\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.9\\microsoft.aspnet.webapi.client.5.2.9.nupkg.sha512",

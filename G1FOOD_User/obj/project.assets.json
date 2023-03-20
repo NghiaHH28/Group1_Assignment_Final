@@ -9349,11 +9349,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\2023\\[SP23]PRN211\\Group1_Assignment_Final\\G1FOOD_User\\G1FOOD_User.csproj",
+      "projectUniqueName": "D:\\2023\\[SP23]PRN211\\Project\\Group1_Assignment_Final\\G1FOOD_User\\G1FOOD_User.csproj",
       "projectName": "G1FOOD_User",
-      "projectPath": "D:\\2023\\[SP23]PRN211\\Group1_Assignment_Final\\G1FOOD_User\\G1FOOD_User.csproj",
+      "projectPath": "D:\\2023\\[SP23]PRN211\\Project\\Group1_Assignment_Final\\G1FOOD_User\\G1FOOD_User.csproj",
       "packagesPath": "C:\\Users\\84832\\.nuget\\packages\\",
-      "outputPath": "D:\\2023\\[SP23]PRN211\\Group1_Assignment_Final\\G1FOOD_User\\obj\\",
+      "outputPath": "D:\\2023\\[SP23]PRN211\\Project\\Group1_Assignment_Final\\G1FOOD_User\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -9375,8 +9375,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\2023\\[SP23]PRN211\\Group1_Assignment_Final\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "D:\\2023\\[SP23]PRN211\\Group1_Assignment_Final\\DataAccess\\DataAccess.csproj"
+            "D:\\2023\\[SP23]PRN211\\Project\\Group1_Assignment_Final\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "D:\\2023\\[SP23]PRN211\\Project\\Group1_Assignment_Final\\DataAccess\\DataAccess.csproj"
             }
           }
         }
