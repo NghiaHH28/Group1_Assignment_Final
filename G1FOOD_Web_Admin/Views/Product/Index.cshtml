@@ -1,0 +1,162 @@
+﻿@model DataAccess.Paging.PaginatedList<DataAccess.DTO.ProductDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Manage Product</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class="">
+    <form asp-action="Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Product Name: <input type="text" name="searchName" value="@ViewBag.SearchName" />
+            </p>
+        </div>
+        <div class="form-actions no-color">
+            Category:
+            <select name="SearchCategory" asp-items="@ViewBag.CatId">
+                @foreach (SelectListItem item in ViewBag.CatId)
+                {
+                    if (item.Value == ViewBag.SelectedCategory)
+                    {
+                        <option value="@item.Value" selected>@item.Text</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="form-actions no-color" style="margin-top: 10px">
+            Title:
+            <input type="radio" id="name" name="searchTitle" value="name" @(ViewBag.SearchTitle == "name" ? "checked" : "")>
+            <label for="name">Name</label>
+            <input type="radio" id="price" name="searchTitle" value="price" @(ViewBag.SearchTitle == "price" ? "checked" : "")>
+            <label for="price">Price</label>
+        </div>
+        <div class="form-actions no-color" style="margin-top: 10px">
+            Oder:
+            <input type="radio" id="ascending" name="searchOrder" value="asc" @(ViewBag.SearchOrder == "asc" ? "checked" : "")>
+            <label for="ascending">Ascending</label>
+            <input type="radio" id="descending" name="searchOrder" value="desc" @(ViewBag.SearchOrder == "desc" ? "checked" : "")>
+            <label for="descending">Descending</label>
+        </div>
+        <div class="form-actions no-color" style="margin-bottom: 10px;">
+            <input type="submit" value="Search" class="" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </div>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Discount
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+                <td>
+                    <img src="@item.ProductImage" alt="" style="width : 100px; height : 100px;">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductSalePercent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductStatus)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
+            <a asp-action="Index"
+               asp-route-searchName="@ViewBag.SearchName"
+               asp-route-searchCategory="@ViewBag.SelectedCategory"
+               asp-route-searchTitle="@ViewBag.SearchTitle"
+               asp-route-searchOrder="@ViewBag.SearchOrder"
+               asp-route-pageNumber="@(Model.PageIndex - 1)"
+               class="btn btn-default @prevDisabled">
+                Previous
+            </a>
+        </li>
+        @for (int i = 1; i <= ViewBag.TotalPage; i++)
+        {
+            <a asp-action="Index"
+           asp-route-searchName="@ViewBag.SearchName"
+           asp-route-searchCategory="@ViewBag.SelectedCategory"
+           asp-route-searchTitle="@ViewBag.SearchTitle"
+           asp-route-searchOrder="@ViewBag.SearchOrder"
+           asp-route-pageNumber="@i">
+                @i
+            </a>
+        }
+        <li class="page-item @(Model.PageIndex == Model.TotalPages ? "disabled" : "")">
+            <a asp-action="Index"
+               asp-route-searchName="@ViewBag.SearchName"
+               asp-route-searchCategory="@ViewBag.SelectedCategory"
+               asp-route-searchTitle="@ViewBag.SearchTitle"
+               asp-route-searchOrder="@ViewBag.SearchOrder"
+               asp-route-pageNumber="@(Model.PageIndex + 1)"
+               class="btn btn-default @nextDisabled">
+                Next
+            </a>
+        </li>
+    </ul>
+</nav>

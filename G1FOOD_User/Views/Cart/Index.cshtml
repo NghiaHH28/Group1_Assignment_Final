@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNetCore.Http;
+@model IEnumerable<DataAccess.DTO.CartDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Price
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CartId)
+                </td>
+                <td>
+                    <img src="@item.ProductImage" alt="" style="width : 100px; height : 100px;">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CartQuantity)
+                </td>
+                <td>
+                    @{
+                        var discountedPrice = item.ProductPrice * (100 - item.ProductSalePercent) / 100;
+                    }
+                    @Html.DisplayFor(modelItem => discountedPrice)
+                </td>
+                <td>
+                    <form method="post" asp-action="Delete" asp-controller="Cart">
+                        <input type="hidden" name="accountID" value="@Context.Session.GetString("AccountID")" />
+                        <input type="hidden" name="id" value="@item.CartId" />
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<form method="get" asp-action="Paying" asp-controller="Paying">
+    <input type="hidden" name="id" value="@Context.Session.GetString("AccountID")" />
+    <button type="submit">Paying</button>
+</form>

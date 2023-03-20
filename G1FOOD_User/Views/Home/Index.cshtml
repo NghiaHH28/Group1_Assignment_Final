@@ -1,0 +1,147 @@
+﻿@using Microsoft.AspNetCore.Http;
+@model DataAccess.Paging.PaginatedList<DataAccess.DTO.ProductDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/home.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<h1>Index</h1>
+
+<div class="">
+    <form asp-action="Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Product Name: <input type="text" name="searchName" value="@ViewBag.SearchName" />
+            </p>
+        </div>
+        <div class="form-actions no-color">
+            Category:
+            <select name="SearchCategory" asp-items="@ViewBag.CatId">
+                @foreach (SelectListItem item in ViewBag.CatId)
+                {
+                    if (item.Value == ViewBag.SelectedCategory)
+                    {
+                        <option value="@item.Value" selected>@item.Text</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="form-actions no-color" style="margin-top: 10px">
+            Title:
+            <input type="radio" id="name" name="searchTitle" value="name" @(ViewBag.SearchTitle == "name" ? "checked" : "")>
+            <label for="name">Name</label>
+            <input type="radio" id="price" name="searchTitle" value="price" @(ViewBag.SearchTitle == "price" ? "checked" : "")>
+            <label for="price">Price</label>
+        </div>
+        <div class="form-actions no-color" style="margin-top: 10px">
+            Oder:
+            <input type="radio" id="ascending" name="searchOrder" value="asc" @(ViewBag.SearchOrder == "asc" ? "checked" : "")>
+            <label for="ascending">Ascending</label>
+            <input type="radio" id="descending" name="searchOrder" value="desc" @(ViewBag.SearchOrder == "desc" ? "checked" : "")>
+            <label for="descending">Descending</label>
+        </div>
+        <div class="form-actions no-color" style="margin-bottom: 10px;">
+            <input type="submit" value="Search" class="" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </div>
+    </form>
+</div>
+
+<div class="container-fluid container-card">
+    <div class="container">
+        <div class="row mb-6 padding">
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                    <div class="card">
+                        <a asp-action="ProductDetails" asp-route-id="@item.ProductId">
+                            <img src="@item.ProductImage" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <div class="card-sale-percent"><span>-@item.ProductSalePercent%</span></div>
+                            <div class="card-sold-out"><span>@item.ProductStatus</span></div>
+                            <a asp-action="ProductDetails" asp-route-id="@item.ProductId">
+                                <h5 class="card-title">
+                                    @item.ProductName
+                                </h5>
+                            </a>
+                            <p class="card-text">@item.ProductName</p>
+                            <div class="card-group">
+                                <div class="card-price-group">
+                                    <span class="card-price">
+                                        <img src="./assert/img/tag.png" alt="alt" />
+                                        @(@item.ProductPrice * (1 - (@item.ProductSalePercent / 100)))
+                                    </span>
+                                    @item.ProductPrice
+                                </div>
+                            </div>
+                            @if (Context.Session != null && Context.Session.GetString("AccountID") != null && Context.Session.GetString("AccountID").Contains("US"))
+                            {
+                                <form method="post" asp-action="Create" asp-controller="Cart">
+                                    <input type="hidden" name="quantity" value="1" />
+                                    <input type="hidden" name="productID" value="@item.ProductId" />
+                                    <input type="hidden" name="accountID" value="@Context.Session.GetString("AccountID")" />
+                                    <button type="submit">BUY NOW</button>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
+            <a asp-action="Index"
+               asp-route-searchName="@ViewBag.SearchName"
+               asp-route-searchCategory="@ViewBag.SelectedCategory"
+               asp-route-searchTitle="@ViewBag.SearchTitle"
+               asp-route-searchOrder="@ViewBag.SearchOrder"
+               asp-route-pageNumber="@(Model.PageIndex - 1)"
+               class="btn btn-default @prevDisabled">
+                Previous
+            </a>
+        </li>
+        @for (int i = 1; i <= ViewBag.TotalPage; i++)
+        {
+            <a asp-action="Index"
+           asp-route-searchName="@ViewBag.SearchName"
+           asp-route-searchCategory="@ViewBag.SelectedCategory"
+           asp-route-searchTitle="@ViewBag.SearchTitle"
+           asp-route-searchOrder="@ViewBag.SearchOrder"
+           asp-route-pageNumber="@i">
+                @i
+            </a>
+        }
+        <li class="page-item @(Model.PageIndex == Model.TotalPages ? "disabled" : "")">
+            <a asp-action="Index"
+               asp-route-searchName="@ViewBag.SearchName"
+               asp-route-searchCategory="@ViewBag.SelectedCategory"
+               asp-route-searchTitle="@ViewBag.SearchTitle"
+               asp-route-searchOrder="@ViewBag.SearchOrder"
+               asp-route-pageNumber="@(Model.PageIndex + 1)"
+               class="btn btn-default @nextDisabled">
+                Next
+            </a>
+        </li>
+    </ul>
+</nav>
