@@ -36,9 +36,9 @@ namespace G1FOOD_User.Controllers
                 PropertyNameCaseInsensitive = true
             };
 
-            IEnumerable<OrderDTO> carts = JsonSerializer.Deserialize<IEnumerable<OrderDTO>>(stringData, options);
+            IEnumerable<OrderDTO> orders = JsonSerializer.Deserialize<IEnumerable<OrderDTO>>(stringData, options);
 
-            return View(carts);
+            return View(orders);
         }
 
         // GET: OrderController/Details/5

@@ -62,6 +62,8 @@ namespace G1FOOD_Web_Admin.Controllers
 
             OrderDTO order = JsonSerializer.Deserialize<OrderDTO>(stringData, options);
 
+            ViewBag.Chef = order.AccIdofChef;
+            ViewBag.Shipper = order.AccIdofShipper;
             ViewBag.BuyerFullName = order.BuyerFullName;
             ViewBag.BuyerPhone = order.BuyerPhone;
             ViewBag.BuyerAddress = order.BuyerAddress;

@@ -16,10 +16,20 @@ namespace G1FoodLibrary.Repository
 
         public IEnumerable<OrderDTO> GetAllOrder() => OrderDAO.Instance.GetAllOrder();
 
+        public IEnumerable<OrderDTO> GetListOrderByAccChef(string accountID) => OrderDAO.Instance.GetAllOrderByAccChef(accountID);
+
         public IEnumerable<OrderDTO> GetListOrderByAccountID(string accountID) => OrderDAO.Instance.GetAllOrderByAccountID(accountID);
+
+        public IEnumerable<OrderDTO> GetListOrderByAccShip(string accountID) => OrderDAO.Instance.GetAllOrderByAccShip(accountID);
 
         public IEnumerable<OrderDetailsDTO> GetListOrderDetailsByOrderID(string orderID) => OrderDAO.Instance.GetAllOrderDetailsByOrderID(orderID);
 
+        public IEnumerable<OrderDTO> GetListOrderProcessing() => OrderDAO.Instance.GetListOrderByStatus("PROCESSING");
+
         public OrderDTO GetOrderByOrderID(string orderID) => OrderDAO.Instance.GetAllOrderByOrderID(orderID);
+
+        public string IsDelivering(string accountID) => OrderDAO.Instance.isDelivering(accountID);
+
+        public void UpdateOrderStatus(string orderID, string accountID, string orderStatus) => OrderDAO.Instance.UpdateOrderStatus(orderID, accountID, orderStatus);
     }
 }

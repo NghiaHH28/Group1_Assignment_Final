@@ -152,3 +152,12 @@ D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Staff\obj\Debug\
 D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Staff\obj\Debug\net5.0\ref\G1FOOD_Web_Staff.dll
 D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Staff\bin\Debug\net5.0\DataAccess.dll
 D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Staff\bin\Debug\net5.0\DataAccess.pdb
+D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Staff\obj\Debug\net5.0\Razor\Views\Account\Edit.cshtml.g.cs
+D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Staff\obj\Debug\net5.0\Razor\Views\Account\StaffProfile.cshtml.g.cs
+D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Staff\obj\Debug\net5.0\Razor\Views\Login\Index.cshtml.g.cs
+D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Staff\obj\Debug\net5.0\Razor\Views\ChefOrder\Details.cshtml.g.cs
+D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Staff\obj\Debug\net5.0\Razor\Views\ChefOrder\Index.cshtml.g.cs
+D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Staff\obj\Debug\net5.0\Razor\Views\ShipOrder\Details.cshtml.g.cs
+D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Staff\obj\Debug\net5.0\Razor\Views\ShipOrder\Index.cshtml.g.cs
+D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Staff\obj\Debug\net5.0\Razor\Views\ChefOrder\ChefHistory.cshtml.g.cs
+D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Staff\obj\Debug\net5.0\Razor\Views\ShipOrder\ShipHistory.cshtml.g.cs

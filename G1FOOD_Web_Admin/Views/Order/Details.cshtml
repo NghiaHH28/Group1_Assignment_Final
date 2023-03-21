@@ -48,6 +48,16 @@
                 <input asp-for="OrderStatus" class="form-control" value="@ViewBag.OrderStatus" disabled/>
                 <span asp-validation-for="OrderStatus" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="AccIdofChef" class="control-label"></label>
+                <input asp-for="AccIdofChef" class="form-control" value="@ViewBag.Chef" type="text" disabled>
+                <span asp-validation-for="OrderDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccIdofShipper" class="control-label"></label>
+                <input asp-for="AccIdofShipper" class="form-control" value="@ViewBag.Shipper" disabled />
+                <span asp-validation-for="OrderStatus" class="text-danger"></span>
+            </div>
 
             <table class="table">
                 <thead>

@@ -7,6 +7,7 @@ using DataAccess.Entities;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Security.Principal;
 
 namespace G1FOOD_User.Controllers
 {
@@ -84,6 +85,7 @@ namespace G1FOOD_User.Controllers
             HttpResponseMessage response = await client.PutAsJsonAsync(AccountApiUrl + id, accountDTO);
             response.EnsureSuccessStatusCode();
 
+            HttpContext.Session.SetString("AccountName", accountDTO.AccountName);
             return RedirectToAction("UserProfile", new {accountID = id });
         }
 

@@ -108,7 +108,7 @@ namespace G1FoodLibrary.DAO
                     VoucherId = "",
                     ProductSalePercent = 0,
                     AccIdofChef = "",
-                    AccIdofShipper = ""
+                    AccIdofShipper = "SP0008"
                 };
 
                 _context.Orders.Add(order);
@@ -155,6 +155,40 @@ namespace G1FoodLibrary.DAO
 
             List<OrderDTO> orderDTOs = new List<OrderDTO>();
             
+            foreach (var order in orders)
+            {
+                orderDTOs.Add(new OrderDTO
+                {
+                    OrderId = order.OrderId,
+                    BuyerFullName = order.BuyerFullName,
+                    OrderDate = order.OrderDate,
+                    OrderStatus = order.OrderStatus
+                });
+            }
+
+            return orderDTOs;
+        }
+
+        public void UpdateOrderStatus(string orderID, string accountID, string orderStatus)
+        {
+            var order = _context.Orders.Where(o => o.OrderId.Equals(orderID)).FirstOrDefault();
+
+            order.OrderStatus = orderStatus;
+            if (accountID.Contains("CH")) {
+                order.AccIdofChef = accountID;
+            } else
+            {
+                order.AccIdofShipper = accountID;
+            }
+            _context.SaveChanges();
+        }
+
+        public IEnumerable<OrderDTO> GetListOrderByStatus(string status)
+        {
+            var orders = _context.Orders.Where(o => o.OrderStatus.Equals(status)).ToList();
+
+            List<OrderDTO> orderDTOs = new List<OrderDTO>();
+
             foreach (var order in orders)
             {
                 orderDTOs.Add(new OrderDTO
@@ -216,6 +250,55 @@ namespace G1FoodLibrary.DAO
             return orderDTOs;
         }
 
+        public IEnumerable<OrderDTO> GetAllOrderByAccShip(string accountID)
+        {
+            var orders = _context.Orders.Where(o => o.AccIdofShipper.Equals(accountID)).ToList();
+
+            List<OrderDTO> orderDTOs = new List<OrderDTO>();
+
+            foreach (var order in orders)
+            {
+                orderDTOs.Add(new OrderDTO
+                {
+                    OrderId = order.OrderId,
+                    OrderDate = order.OrderDate,
+                    OrderNote = order.OrderNote,
+                    AccountId = order.AccountId,
+                    OrderStatus = order.OrderStatus,
+                    BuyerFullName = order.BuyerFullName,
+                    BuyerAddress = order.BuyerAddress,
+                    BuyerPhone = order.BuyerPhone
+                });
+            }
+
+            return orderDTOs;
+        }
+
+        public IEnumerable<OrderDTO> GetAllOrderByAccChef(string accountID)
+        {
+            var orders = _context.Orders.Where(o => o.AccIdofChef.Equals(accountID)).ToList();
+
+            List<OrderDTO> orderDTOs = new List<OrderDTO>();
+
+            foreach (var order in orders)
+            {
+                orderDTOs.Add(new OrderDTO
+                {
+                    OrderId = order.OrderId,
+                    OrderDate = order.OrderDate,
+                    OrderNote = order.OrderNote,
+                    AccountId = order.AccountId,
+                    OrderStatus = order.OrderStatus,
+                    BuyerFullName = order.BuyerFullName,
+                    BuyerAddress = order.BuyerAddress,
+                    BuyerPhone = order.BuyerPhone
+                });
+            }
+
+            return orderDTOs;
+        }
+
+
         public OrderDTO GetAllOrderByOrderID(string orderID)
         {
             var orders = _context.Orders.Where(o => o.OrderId.Equals(orderID)).FirstOrDefault();
@@ -229,10 +312,24 @@ namespace G1FoodLibrary.DAO
                 OrderStatus = orders.OrderStatus,
                 BuyerFullName = orders.BuyerFullName,
                 BuyerAddress = orders.BuyerAddress,
-                BuyerPhone = orders.BuyerPhone
+                BuyerPhone = orders.BuyerPhone,
+                AccIdofChef = orders.AccIdofChef,
+                AccIdofShipper = orders.AccIdofShipper
             };
 
             return orderDTOs;
+        }
+
+        public string isDelivering(string accountID)
+        {
+            var order = _context.Orders.Where(o => o.AccIdofShipper.Equals(accountID) && o.OrderStatus.Equals("DELIVERING")).FirstOrDefault();
+
+            if (order != null)
+            {
+                return order.OrderId;
+            }
+
+            return "Not Delivering";
         }
     }
 }
