@@ -100,15 +100,15 @@
         </form>
     </div>
 </div>
-<form method="post" asp-action="Confirm" asp-controller="ShipOrder">
-    <input type="hidden" name="orderID" value="@ViewBag.OrderID" />
-    <input type="hidden" name="accountID" value="@Context.Session.GetString("AccountID")" />
-    <input type="hidden" name="status" value="DELIVERED" />
-    <button type="submit">Delivered</button>
-</form>
-<div>
-    <a asp-action="Index" asp-route-id="@Context.Session.GetString("AccountID")">Back to List</a>
-</div>
+@if (ViewBag.OrderStatus != "DELIVERED")
+{
+    <form method="post" asp-action="Confirm" asp-controller="ShipOrder">
+        <input type="hidden" name="orderID" value="@ViewBag.OrderID" />
+        <input type="hidden" name="accountID" value="@Context.Session.GetString("AccountID")" />
+        <input type="hidden" name="status" value="DELIVERED" />
+        <button type="submit">Delivered</button>
+    </form>
+}
 
 @section Scripts {
     @{
