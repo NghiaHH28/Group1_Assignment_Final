@@ -330,3 +330,4 @@ D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Admin\obj\Debug\
 D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Admin\obj\Debug\net5.0\G1FOOD_Web_Admin.pdb
 D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Admin\obj\Debug\net5.0\G1FOOD_Web_Admin.genruntimeconfig.cache
 D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Admin\obj\Debug\net5.0\ref\G1FOOD_Web_Admin.dll
+D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Web_Admin\bin\Debug\net5.0\libman.json
