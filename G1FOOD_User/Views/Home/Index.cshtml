@@ -7,13 +7,15 @@
 }
 
 <head>
-    <link rel="stylesheet" href="~/css/home.css">
+    
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/base.css" type="text/css">
+    <link rel="stylesheet" href="~/css/home.css" type="text/css">
 </head>
 
 <h1>Index</h1>
 
-<div class="">
+<div class="container-fluid wrapper">
     <form asp-action="Index" method="get">
         <div class="form-actions no-color">
             <p>
@@ -57,7 +59,7 @@
     </form>
 </div>
 
-<div class="container-fluid container-card">
+<div class="container-fluid">
     <div class="container">
         <div class="row mb-6 padding">
             @foreach (var item in Model)
@@ -70,19 +72,19 @@
                         <div class="card-body">
                             <div class="card-sale-percent"><span>-@item.ProductSalePercent%</span></div>
                             <div class="card-sold-out"><span>@item.ProductStatus</span></div>
-                            <a asp-action="ProductDetails" asp-route-id="@item.ProductId">
-                                <h5 class="card-title">
+                            <h5 class="card-title">
+                                <a asp-action="ProductDetails" asp-route-id="@item.ProductId">
                                     @item.ProductName
-                                </h5>
-                            </a>
-                            <p class="card-text">@item.ProductName</p>
+                                </a>
+                            </h5>
+                            
+                            <p class="card-text">@item.ProductDescription</p>
                             <div class="card-group">
                                 <div class="card-price-group">
                                     <span class="card-price">
-                                        <img src="./assert/img/tag.png" alt="alt" />
-                                        @(@item.ProductPrice * (1 - (@item.ProductSalePercent / 100)))
+                                        @(@item.ProductPrice)
                                     </span>
-                                    @item.ProductPrice
+                                    <span class="card-original-price">@item.ProductPrice</span>
                                 </div>
                             </div>
                             @if (Context.Session != null && Context.Session.GetString("AccountID") != null && Context.Session.GetString("AccountID").Contains("US"))
@@ -91,7 +93,7 @@
                                     <input type="hidden" name="quantity" value="1" />
                                     <input type="hidden" name="productID" value="@item.ProductId" />
                                     <input type="hidden" name="accountID" value="@Context.Session.GetString("AccountID")" />
-                                    <button type="submit">BUY NOW</button>
+                                    <button class="btn-main" type="submit">BUY NOW</button>
                                 </form>
                             }
                         </div>
