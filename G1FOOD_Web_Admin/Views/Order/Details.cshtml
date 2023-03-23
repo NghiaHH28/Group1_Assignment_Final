@@ -19,8 +19,8 @@
     <div class="container-fluid table-container">
         <div class="container">
             <form asp-action="Paying">
-            <div class="row">
-                <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-control-group">
                             <input asp-for="AccountId" hidden value="@Context.Session.GetString("AccountID")" />
@@ -55,12 +55,20 @@
                             <input asp-for="OrderNote" value="@ViewBag.Note" disabled />
                             <span asp-validation-for="OrderNote" class="text-danger"></span>
                         </div>
+                    </div>
                 </div>
-            </div>
-            
+
                 <div class="row">
                     <div class="col-md-12">
                         <h6 class="table-header">ORDER DETAIL</h6>
+                        <div class="col-xs-12 col-md-3">
+                            <div class="table-total-group">
+                                <div class="table-total-sub-group">
+                                    <h4 class="table-label">Total:</h4>
+                                    <span class="table-total"><span>@ViewBag.TotalPrice</span>đ</span>
+                                </div>
+                            </div>
+                        </div>
                         <table class="table table-striped text-center align-middle">
                             <thead class="table-heading">
                                 <tr>
@@ -107,6 +115,7 @@
                                 }
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </form>

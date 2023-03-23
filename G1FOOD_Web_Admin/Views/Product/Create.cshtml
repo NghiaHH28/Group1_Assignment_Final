@@ -15,39 +15,43 @@
                     <h2 class="form-heading">ADD PRODUCT</h2>
                 </div>
                 <div class="form-control-group">
-                    <label asp-for="ProductName" class="form-text-label"></label>
+                    <label asp-for="ProductName" class="form-text-label">Name:</label>
                     <input asp-for="ProductName" />
                     <span asp-validation-for="ProductName" class="text-danger"></span>
                 </div>
                 <div class="form-control-group">
-                    <label asp-for="ProductDescription" class="form-text-label"></label>
+                    <label asp-for="ProductDescription" class="form-text-label">Description:</label>
                     <input asp-for="ProductDescription"/>
                     <span asp-validation-for="ProductDescription" class="text-danger"></span>
                 </div>
                 <div class="form-control-group">
-                    <label asp-for="ProductPrice" class="form-text-label"></label>
+                    <label asp-for="ProductPrice" class="form-text-label">Price:</label>
                     <input asp-for="ProductPrice" />
                     <span asp-validation-for="ProductPrice" class="text-danger"></span>
                 </div>
                 <div class="form-control-group">
-                    <label asp-for="ProductSalePercent" class="form-text-label"></label>
+                    <label asp-for="ProductSalePercent" class="form-text-label">Sale Percent:</label>
                     <input asp-for="ProductSalePercent" />
                     <span asp-validation-for="ProductSalePercent" class="text-danger"></span>
                 </div>
                 <div class="form-control-group">
-                    <label asp-for="ProductStatus" class="form-text-label"></label>
-                    <input asp-for="ProductStatus" />
+                    <label asp-for="ProductStatus" class="form-text-label">Status:</label>
+                    <select asp-for="ProductStatus">
+                        <option value="AVAILABLE">AVAILABLE</option>
+                        <option value="SOUL_OUT">SOUL_OUT</option>
+                        <option value="REMOVED">REMOVED</option>
+                    </select>
                     <span asp-validation-for="ProductStatus" class="text-danger"></span>
                 </div>
                 <div class="form-control-group">
-                    <label asp-for="ProductImage" class="form-text-label"></label>
+                    <label asp-for="ProductImage" class="form-text-label">Image:</label>
                     <input type="file" id="product-image" accept=".png,.jpg,.jpeg" onchange="previewImage()" />
                     <input type="hidden" asp-for="ProductImage" name="ProductImage" />
                     <img id="preview-image" src="#" alt="Preview Image" style="width : 50px; Height : 50px; display: none" />
                     <span asp-validation-for="ProductImage" class="text-danger"></span>
                 </div>
                 <div class="form-control-group">
-                    <label asp-for="CategoryId" class="form-text-label"></label>
+                    <label asp-for="CategoryId" class="form-text-label">Category:</label>
                     <select asp-for="CategoryId">
                         <option value="FOOD">FOOD</option>
                         <option value="DRINK">DRINK</option>

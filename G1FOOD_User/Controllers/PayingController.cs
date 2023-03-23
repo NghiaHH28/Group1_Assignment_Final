@@ -85,7 +85,15 @@ namespace G1FOOD_User.Controllers
 
             IEnumerable<CartDTO> carts = JsonSerializer.Deserialize<IEnumerable<CartDTO>>(stringData, options);
 
+            int totalPrice = 0;
+
+            foreach (CartDTO cartDTO in carts)
+            {
+                totalPrice += cartDTO.ProductPrice;
+            }
+
             ViewBag.Carts = carts;
+            ViewBag.TotalPrice = totalPrice;
 
             return View();
         }

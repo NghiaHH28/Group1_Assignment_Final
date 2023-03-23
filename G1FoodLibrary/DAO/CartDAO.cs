@@ -79,12 +79,12 @@ namespace G1FoodLibrary.DAO
             return cart;
         }
 
-        public Cart GetCartByProductID(string productID)
+        public Cart GetCartByProductIDAccountID(string productID, string accountID)
         {
             Cart cart = null;
             try
             {
-                cart = _context.Carts.Where(c => c.ProductId.Equals(productID)).FirstOrDefault();
+                cart = _context.Carts.Where(c => c.ProductId.Equals(productID) && c.AccountId.Equals(accountID)).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -98,7 +98,7 @@ namespace G1FoodLibrary.DAO
         {
             try
             {
-                Cart _cart = GetCartByProductID(cartDTO.ProductId);
+                Cart _cart = GetCartByProductIDAccountID(cartDTO.ProductId, cartDTO.AccountId);
                 if (_cart == null)
                 {
                     Cart cart = new Cart

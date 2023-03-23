@@ -80,6 +80,15 @@ namespace G1FOOD_Web_Staff.Controllers
 
             OrderDTO order = JsonSerializer.Deserialize<OrderDTO>(stringData, options);
 
+            int totalPrice = 0;
+
+            foreach (var cartDTO in orderDetails)
+            {
+                totalPrice += cartDTO.OrderDprice;
+            }
+
+            ViewBag.TotalPrice = totalPrice;
+
             ViewBag.OrderID = order.OrderId;
             ViewBag.BuyerFullName = order.BuyerFullName;
             ViewBag.BuyerPhone = order.BuyerPhone;
