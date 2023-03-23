@@ -33,16 +33,7 @@ namespace G1FOOD_User.Controllers
                 PropertyNameCaseInsensitive = true
             };
 
-            IEnumerable<CartDTO> carts = JsonSerializer.Deserialize<IEnumerable<CartDTO>>(stringData, options);
-
-            int totalPrice = 0;
-
-            foreach (var cartDTO in carts)
-            {
-                totalPrice += cartDTO.ProductPrice;
-            }
-
-            ViewBag.TotalPrice = totalPrice;
+            IEnumerable<CartDTO> carts = JsonSerializer.Deserialize<IEnumerable<CartDTO>>(stringData, options);          
 
             return View(carts);
         }

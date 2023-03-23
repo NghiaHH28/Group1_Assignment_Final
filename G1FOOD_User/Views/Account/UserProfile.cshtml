@@ -5,42 +5,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container-fluid wrapper">
-    <div class="container-fluid container-fluid-form">
-        <div class="wrapper-form text-left">
-            <div class="form-heading-group">
-                <i class="fa-solid fa-clipboard-user fa-circle"></i>
-                <h2 class="form-heading">USER PROFILE</h2>
-            </div>
-            <div class="form-control-group">
-                <label class="form-text-label">Name:</label>
-                <label> @Html.DisplayFor(model => model.AccountName)</label>
-            </div>
-            <div class="form-control-group">
-                <label class="form-text-label">Email</label>
-                <label>@Html.DisplayFor(model => model.AccountEmail)</label>
-            </div>
-            <div class="form-control-group">
-                <label class="form-text-label">Address:</label>
-                <label>@Html.DisplayFor(model => model.AccountAddress)</label>
-            </div>
-            <div class="form-control-group">
-                <label class="form-text-label">Phone:</label>
-                <label>@Html.DisplayFor(model => model.AccountPhone)</label>
-            </div>
-            <div class="form-control-group">
-                <label class="form-text-label">Birthday:</label>
-                <label>@Html.DisplayFor(model => model.AccountBirthDay)</label>
-            </div>
-            <div class="form-btn-group">
-                @*<input type="submit" value="Create" class="btn btn-primary" />*@
-                
-                <button type="button" class="btn btn-primary">
-                    @Html.ActionLink("Edit profile", "Edit", new { id = Model.AccountId })
-                </button>
-                @*<h6 class="form-btn-separator">&nbsp;OR&nbsp;</h6>
-                <button type="button" name="button" class="btn-primary"><a asp-action="Index">Back to List</a></button>*@
-            </div>
-        </div>
-    </div>
+<h1>UserProfile</h1>
+
+<div>
+    <h4>AccountDTO</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AccountId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountEmail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AccountEmail)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AccountName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountAddress)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AccountAddress)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountPhone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AccountPhone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountBirthDay)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AccountBirthDay)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountStartDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AccountStartDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AccountId })
 </div>

@@ -5,68 +5,78 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" type="text/css">
-    <link rel="stylesheet" href="~/lib/font-awesome/js/all.js" type="text/javascript">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/js/bootstrap.js" type="text/javascript">
-    <link rel="stylesheet" href="~/css/base.css" type="text/css">
-    <link rel="stylesheet" href="~/css/productDetail.css" type="text/css">
-    <title>Login</title>
-</head>
-<div class="container-fluid wrapper">
-    <div class="container-fluild container-product-detail">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-5">
-                    <div>
-                        <img class="product-detail-img" src="@Model.ProductImage" alt="">
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-7">
-                    <ul class="product-detail-container">
-                        <li class="product-detail-item heading">
-                            <h3 class="product-detail-name">@Html.DisplayFor(model => model.ProductName)</h3>
-                            <span class="product-detail-sale-percent">-@Html.DisplayFor(model => model.ProductSalePercent)%</span>
-                        </li>
-                        <li class="product-detail-item">
-                            <span class="product-detail-label">Description:</span>
-                            <span class="product-detail-descript">@Html.DisplayFor(model => model.ProductDescription)</span>
-                        </li>
-                        <li class="product-detail-item">
-                            <span class="product-detail-label">Status:</span>
-                            <span class="product-detail-status"> @Html.DisplayFor(model => model.ProductStatus)</span>
-                        </li>
-                        <li class="product-detail-item">
-                            <span class="product-detail-label">Price:</span>
-                            <span class="product-detail-price"> @Html.DisplayFor(model => model.ProductPrice)đ</span>
-                            <span class="product-detail-original-price">@Html.DisplayFor(model => model.ProductPrice)đ</span>
-                        </li>
-                        <form method="post" asp-action="Create" asp-controller="Cart">
-                        <li class="product-detail-item">
-                            <div class="product-detail-btn-group">
-                                <button class="btn-primary btn-change-quantity" type="button" onclick="decrement()">-</button>
-                                <input class="product-detail-quantity" type="text" id="number" name="quantity" value="1" readonly min="0" max="50">
-                                <button class="btn-primary btn-change-quantity" type="button" onclick="increment()">+</button>
-                            </div>
-                            <input type="hidden" name="accountID" value="@Context.Session.GetString("AccountID")" />
-                            <input type="hidden" name="productID" value="@Model.ProductId" />
-                        </li>
-                            @if (Context.Session != null && Context.Session.GetString("AccountID") != null && Context.Session.GetString("AccountID").Contains("US"))
-                            {
-                            <button type="submit" class="btn-primary">Add into cart</button>
-                            }
-                        </form>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
+<h1>Details</h1>
+
+<div>
+    <h4>ProductDTO</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductDescription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductPrice)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductSalePercent)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductSalePercent)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductStatus)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductStatus)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Model.ProductImage" alt="" style="width : 100px; height : 100px;">
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CategoryId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <form method="post" asp-action="Create" asp-controller="Cart">
+        <input type="hidden" name="accountID" value="@Context.Session.GetString("AccountID")" />
+        <input type="hidden" name="productID" value="@Model.ProductId" />
+        <div class="product-detail-btn-group">
+            <button class="btn-primary btn-change-quantity" type="button" onclick="decrement()">-</button>
+            <input class="product-detail-quantity" type="text" id="number" name="quantity" value="1" readonly min="0" max="50">
+            <button class="btn-primary btn-change-quantity" type="button" onclick="increment()">+</button>
+        </div>
+        @if (Context.Session != null && Context.Session.GetString("AccountID") != null && Context.Session.GetString("AccountID").Contains("US"))
+        {
+            <button type="submit">Add into cart</button>
+        }
+    </form>
+</div>
 <script>
     function increment() {
         var numberInput = document.getElementById("number");

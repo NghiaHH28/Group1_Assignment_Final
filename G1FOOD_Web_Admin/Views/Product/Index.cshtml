@@ -38,7 +38,7 @@
                                             <option value="@item.Value">@item.Text</option>
                                         }
                                     }
-
+                                   
                                 </select>
                             </div>
                             <div class="table-control-btn-group">
@@ -154,29 +154,22 @@
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 }
 
-
-<div class="container-fluid pagination-container">
-    <div class="row">
-        <div class="col-sm-12">
-        </div>
-    </div>
-</div>
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-        <li class="page-item">
-            <a class="page-link"asp-action="Index"
+        <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
+            <a asp-action="Index"
                asp-route-searchName="@ViewBag.SearchName"
                asp-route-searchCategory="@ViewBag.SelectedCategory"
                asp-route-searchTitle="@ViewBag.SearchTitle"
                asp-route-searchOrder="@ViewBag.SearchOrder"
                asp-route-pageNumber="@(Model.PageIndex - 1)"
                class="btn btn-default @prevDisabled">
-                <span aria-hidden="true">&laquo;</span>
+                Previous
             </a>
         </li>
         @for (int i = 1; i <= ViewBag.TotalPage; i++)
         {
-            <a class="page-link" asp-action="Index"
+            <a asp-action="Index"
            asp-route-searchName="@ViewBag.SearchName"
            asp-route-searchCategory="@ViewBag.SelectedCategory"
            asp-route-searchTitle="@ViewBag.SearchTitle"
@@ -185,15 +178,15 @@
                 @i
             </a>
         }
-        <li class="page-item">
-            <a class="page-link" sp-action="Index"
+        <li class="page-item @(Model.PageIndex == Model.TotalPages ? "disabled" : "")">
+            <a asp-action="Index"
                asp-route-searchName="@ViewBag.SearchName"
                asp-route-searchCategory="@ViewBag.SelectedCategory"
                asp-route-searchTitle="@ViewBag.SearchTitle"
                asp-route-searchOrder="@ViewBag.SearchOrder"
                asp-route-pageNumber="@(Model.PageIndex + 1)"
                class="btn btn-default @nextDisabled">
-                <span aria-hidden="true">&raquo;</span>
+                Next
             </a>
         </li>
     </ul>

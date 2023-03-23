@@ -41,7 +41,7 @@ namespace G1FOOD_Web_Admin.Controllers
 
             if (!response.IsSuccessStatusCode)
             {
-                TempData["ErrorMessage"] = "Wrong email or password. Please try again!";
+                TempData["ErrorMessage"] = "Tài khoản hoặc mật khẩu không chính xác.";
                 return RedirectToAction("Index", "Login");
             }
 
@@ -59,7 +59,7 @@ namespace G1FOOD_Web_Admin.Controllers
                 return RedirectToAction("Index", "Home");
             } 
 
-            TempData["ErrorMessage"] = "Wrong email or password. Please try again!";
+            TempData["ErrorMessage"] = "Tài khoản hoặc mật khẩu không chính xác.";
             return RedirectToAction("Index", "Login");
         }
     }

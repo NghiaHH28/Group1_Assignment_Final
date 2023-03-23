@@ -10,8 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using G1FoodLibrary.Hash;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
-using System.IO;
 
 namespace G1FoodLibrary.DAO
 {
@@ -35,14 +33,7 @@ namespace G1FoodLibrary.DAO
                 }
             }
         }
-        private string GetConnectionString()
-        {
-            IConfiguration config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", true, true).Build();
-            var strConn = config["ConnectionString:G1FoodDB"];
-            return strConn;
-        }
+
         public AccountDAO() => _context = new DBContext();
 
         public AccountDTO Login(string email, string password)
@@ -241,7 +232,7 @@ namespace G1FoodLibrary.DAO
 
         public string GetLastAccountID()
         {
-            var connectionString = GetConnectionString();
+            var connectionString = "Data Source=localhost;Initial Catalog=G1FOOD_PRN;User ID=sa;Password=123456";
             var sqlQuery = @"SELECT TOP 1 AccountID
                      FROM Account
                      ORDER BY CAST(RIGHT(AccountID, 4) AS INT) DESC";

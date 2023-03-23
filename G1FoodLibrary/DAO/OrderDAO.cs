@@ -4,10 +4,8 @@ using G1FoodLibrary.Context;
 using G1FoodLibrary.Hash;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,20 +33,11 @@ namespace G1FoodLibrary.DAO
             }
         }
 
-        private string GetConnectionString()
-        {
-            IConfiguration config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", true, true).Build();
-            var strConn = config["ConnectionString:G1FoodDB"];
-            return strConn;
-        }
-
         public OrderDAO() => _context = new DBContext();
 
         public string GetLastOrderID()
         {
-            var connectionString = GetConnectionString();
+            var connectionString = "Data Source=localhost;Initial Catalog=G1FOOD_PRN;User ID=sa;Password=123456";
             var sqlQuery = @"SELECT TOP 1 [OrderID]
                      FROM [Order]
                      ORDER BY CAST(RIGHT(OrderID, 4) AS INT) DESC";
@@ -72,7 +61,7 @@ namespace G1FoodLibrary.DAO
 
         public string GetLastOrderDetailsID()
         {
-            var connectionString = GetConnectionString();
+            var connectionString = "Data Source=localhost;Initial Catalog=G1FOOD_PRN;User ID=sa;Password=123456";
             var sqlQuery = @"SELECT TOP 1 OrderDID
                      FROM ORDER_DETAIL
                      ORDER BY CAST(RIGHT(OrderDID, 4) AS INT) DESC";
