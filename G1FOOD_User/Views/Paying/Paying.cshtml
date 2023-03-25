@@ -119,10 +119,8 @@
                             <span class="table-total"><span>@ViewBag.ToalPrice</span>đ</span>
                         </div>
                         <div class="table-total-group">
-                            <form method="get" asp-action="Paying" asp-controller="Paying">
-                                <input type="hidden" name="id" value="@Context.Session.GetString("AccountID")" />
+                            <input type="hidden" name="id" value="@Context.Session.GetString("AccountID")" />
                                 <button class="btn-primary" type="submit">Paying</button>
-                            </form>
                         </div>
                     </div>
                 </div>
