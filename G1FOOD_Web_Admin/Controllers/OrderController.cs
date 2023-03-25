@@ -61,7 +61,14 @@ namespace G1FOOD_Web_Admin.Controllers
             };
 
             OrderDTO order = JsonSerializer.Deserialize<OrderDTO>(stringData, options);
+            int toalPrice = 0;
 
+            foreach (OrderDetailsDTO c in orderDetails)
+            {
+                toalPrice += c.OrderDprice;
+            }
+
+            ViewBag.ToalPrice = toalPrice;
             ViewBag.Chef = order.AccIdofChef;
             ViewBag.Shipper = order.AccIdofShipper;
             ViewBag.BuyerFullName = order.BuyerFullName;

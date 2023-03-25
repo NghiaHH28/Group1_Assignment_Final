@@ -48,7 +48,10 @@
                 <input asp-for="OrderStatus" class="form-control" value="@ViewBag.OrderStatus" disabled/>
                 <span asp-validation-for="OrderStatus" class="text-danger"></span>
             </div>
-
+            <div class="table-total-sub-group">
+                <h4 class="table-label">Total:</h4>
+                <span class="table-total"><span>@ViewBag.ToalPrice</span>đ</span>
+            </div>
             <table class="table">
                 <thead>
                     <tr>

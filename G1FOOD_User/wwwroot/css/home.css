@@ -160,6 +160,14 @@
 .card-title a {
     font-size: 20px;
     text-decoration: none;
+    display: block;
+    --line-height: 20px;
+    line-height: var(--line-height);
+    height: var(--line-height);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
 .card-text {
@@ -193,16 +201,16 @@
 
 .page-item {
     text-align: center;
+    padding: 0px 2px !important;
 }
 
 .page-item .page-link {
-    width: 64px;
-    /* height: 48px; */
+    width: 52px;
+    padding: 12px 0;
     color: var(--background-color);
     background-color: var(--primary-color);
     border: none;
     border: 1px solid var(--primary-color);
-    line-height: 48px;;
     font-weight: bold;
 }
 
@@ -211,3 +219,39 @@
     outline: none;
 }
 
+#nav-home-filter {
+    background-color: white;
+    box-shadow: 1px 1px 2px 1px #ddd;
+    border-radius: 4px;
+    padding: 12px;
+}
+
+.home-filter-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .home-filter-group .home-filter-sub-group {
+        display: flex;
+        align-items: center;
+    }
+
+.home-filter-label {
+    margin-right: 8px;
+}
+
+.btn-home-filter {
+    margin-left: 6px;
+    padding: 4px 12px;
+}
+
+.search-input {
+    border-radius: 4px;
+    height: 36px;
+    padding-left: 6px;
+}
+
+.home-filter-sort label {
+    margin-bottom: 0px !important;
+}

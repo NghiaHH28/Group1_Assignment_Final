@@ -127,6 +127,7 @@ D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\bin\Debug\
 D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\bin\Debug\net5.0-windows\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\obj\Debug\net5.0-windows\G1FOOD_Win_Admin.csproj.AssemblyReference.cache
+D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\obj\Debug\net5.0-windows\G1FOOD_Win_Admin.Form1.resources
 D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\obj\Debug\net5.0-windows\G1FOOD_Win_Admin.csproj.GenerateResource.cache
 D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\obj\Debug\net5.0-windows\G1FOOD_Win_Admin.GeneratedMSBuildEditorConfig.editorconfig
 D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\obj\Debug\net5.0-windows\G1FOOD_Win_Admin.AssemblyInfoInputs.cache
@@ -140,7 +141,3 @@ D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\obj\Debug\
 D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\obj\Debug\net5.0-windows\ref\G1FOOD_Win_Admin.dll
 D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\bin\Debug\net5.0-windows\DataAccess.dll
 D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\bin\Debug\net5.0-windows\DataAccess.pdb
-D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\obj\Debug\net5.0-windows\MyStoreWinApp.frmLogin.resources
-D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\obj\Debug\net5.0-windows\G1FOOD_Win_Admin.frmMain.resources
-D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\obj\Debug\net5.0-windows\G1FOOD_Win_Admin.frmProduct.resources
-D:\2023\[SP23]PRN211\Project\Group1_Assignment_Final\G1FOOD_Win_Admin\obj\Debug\net5.0-windows\G1FOOD_Win_Admin.frmOrder.resources

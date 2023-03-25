@@ -180,6 +180,11 @@
     color: var(--text-color);
 }
 
+.nav-cart {
+    font-size: 24px;
+    color: var(--text-primary-color);
+}
+
 .nav-item {
     display: flex;
     align-items: center;
@@ -348,11 +353,20 @@
     margin-top: 24px;
 }
 
-/* Home-filter css*/
-.home-filter-icon {
-    width: 34px;
-    height: 34px;
+.nav-wrapper {
+    position: relative !important;
 }
+
+    .nav-wrapper .navbar-collapse {
+        position: absolute !important;
+        right: 0px !important;
+    }
+
+    /* Home-filter css*/
+    .home-filter-icon {
+        width: 34px;
+        height: 34px;
+    }
 
 .home-filter .container .row .col-sm-12 .navbar {
     background-color: var(--background-color);
